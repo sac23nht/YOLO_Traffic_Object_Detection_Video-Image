@@ -1,0 +1,112 @@
+🚦 Istanbul Traffic Object Detection using YOLOv8
+🧠 Objective
+This project aims to detect and classify common traffic objects in Istanbul traffic imagery using YOLOv8. The pipeline is built to:
+
+Extract image frames from real video footage
+
+Annotate and format the dataset using YOLO standards
+
+Apply image augmentations to improve model generalization
+
+Train a custom YOLOv8n model for real-time object detection
+
+Evaluate model performance and run inference on new data
+
+📽️ Detection Video Demo
+Watch the model in action — detecting traffic objects in real video frames:
+
+
+(Replace YOUR_VIDEO_ID with the actual video ID from YouTube or other hosting platform)
+
+🖼️ Sample Detection Results
+Here are example detections made by the trained model:
+
+<p align="center"> <img src="media/sample_detection_1.jpg" width="600"/> <br> <i>Detected: car, bus, person, motorcycle</i> </p> <p align="center"> <img src="media/sample_detection_2.jpg" width="600"/> <br> <i>Detected: car, person, bicycle</i> </p>
+⚙️ Techniques & Libraries Used
+Step	Details
+Video Processing	Extracted frames using OpenCV from raw_video.mp4
+Annotation Parsing	Converted XML (Pascal VOC) → YOLO format
+Data Augmentation	Albumentations (flip, rotate, brightness, crop)
+Image Preprocessing	Resize, normalize
+Model Training	YOLOv8n (via Ultralytics / PyTorch)
+Evaluation & Inference	Precision-Recall curve, bounding boxes, saved predictions
+
+📂 Project Structure
+bash
+Copy
+Edit
+📦 istanbul-traffic-yolo/
+├── istanbul_traffic/
+│   ├── train/              # JPG + XML files for training
+│   ├── test/               # Test images for inference
+│   └── raw_video.mp4       # Input traffic video
+│
+├── data_yolo/
+│   ├── images/{train,val}/
+│   └── labels/{train,val}/
+│
+├── notebooks/
+│   ├── 032-traffic-data-as-images-and-video.ipynb
+│   └── 035-dataset-augmentation.ipynb
+│
+├── runs/                  # YOLOv8 outputs (model, PR curves, predictions)
+│   └── detect/train/
+│
+├── media/                 # Demo video and sample detection images
+│   ├── sample_detection_1.jpg
+│   ├── sample_detection_2.jpg
+│   └── output_demo.mp4
+│
+├── data.yaml              # YOLO dataset config
+├── requirements.txt       # Python dependencies
+├── main.py                # Script to run training & inference
+└── README.md              # Project documentation
+📌 Detected Classes
+The model detects the following traffic object classes:
+
+🚗 car
+
+🚌 bus
+
+🚶 person
+
+🏍️ motorcycle
+
+🚴 bicycle
+
+🛠️ Installation
+Prerequisites
+Python 3.8+
+
+pip
+
+Install Dependencies
+bash
+Copy
+Edit
+pip install -r requirements.txt
+🚀 Run the Project
+Run the entire pipeline using:
+
+bash
+Copy
+Edit
+python main.py
+This will:
+
+Extract and preprocess images from video
+
+Parse XML annotations and convert to YOLO format
+
+Apply augmentations
+
+Train YOLOv8n using custom dataset
+
+Evaluate performance and save PR curves
+
+Run detection on test images and save results
+
+📬 Contact
+If you need any further information about this project, please contact:
+
+📧 jayaramireddyc26@gmail.com
